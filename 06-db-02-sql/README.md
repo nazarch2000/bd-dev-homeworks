@@ -12,6 +12,8 @@
 
 Приведите получившуюся команду или docker-compose-манифест.
 
+![image](https://github.com/nazarch2000/bd-dev-homeworks/assets/106932460/e38c6f41-5f4b-4957-adae-38d15be247f9)
+
 ## Задача 2
 
 В БД из задачи 1: 
