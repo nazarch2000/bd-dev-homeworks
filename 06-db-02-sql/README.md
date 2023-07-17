@@ -99,6 +99,7 @@
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод этого запроса.
  
 Подсказка: используйте директиву `UPDATE`.
+![image](https://github.com/nazarch2000/bd-dev-homeworks/assets/106932460/9723730d-e707-4e29-bb57-c92f0fb5e3c6)
 
 ## Задача 5
 
@@ -107,6 +108,18 @@
 
 Приведите получившийся результат и объясните, что значат полученные значения.
 
+```
+Hash Join  (cost=37.00..57.24 rows=810 width=68) (actual time=0.023..0.026 rows=6 loops=1) 
+  Hash Cond: (c.id_order = o.id_order) # Связь между столбцами id_order в таблицах clients orders
+  ->  Seq Scan on clients c  (cost=0.00..18.10 rows=810 width=36) (actual time=0.008..0.009 rows=10 loops=1)
+# Операция последовательного сканирования
+  ->  Hash  (cost=22.00..22.00 rows=1200 width=36) (actual time=0.008..0.009 rows=5 loops=1) # Операция построения хеш-таблицы
+        Buckets: 2048  Batches: 1  Memory Usage: 17kB
+        ->  Seq Scan on orders o  (cost=0.00..22.00 rows=1200 width=36) (actual time=0.004..0.005 rows=5 loops=1)
+# Операция последовательного сканирования
+Planning Time: 0.118 ms
+Execution Time: 0.045 ms
+```
 ## Задача 6
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1).
