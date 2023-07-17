@@ -78,6 +78,10 @@
     - запросы,
     - результаты их выполнения.
 
+![image](https://github.com/nazarch2000/bd-dev-homeworks/assets/106932460/9882efad-6a61-44b7-a890-ff26372503ef)
+![image](https://github.com/nazarch2000/bd-dev-homeworks/assets/106932460/b98e368e-7178-423a-8737-6bc06b4b9fc4)
+![image](https://github.com/nazarch2000/bd-dev-homeworks/assets/106932460/441d816b-bf93-4201-bb39-27eb6834f97c)
+
 ## Задача 4
 
 Часть пользователей из таблицы clients решили оформить заказы из таблицы orders.
