@@ -123,7 +123,10 @@ Execution Time: 0.045 ms
 ## Задача 6
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1).
-
+```bash
+docker exec postgres_db_1 pg_dump -U postgres -h localhost -p 5432 -F p -f backup.sql test_db
+docker cp postgres_db_1:/var/lib/postgresql/backups/backup.sql ./postgres_backups/backup.sql
+```
 Остановите контейнер с PostgreSQL, но не удаляйте volumes.
 
 Поднимите новый пустой контейнер с PostgreSQL.
