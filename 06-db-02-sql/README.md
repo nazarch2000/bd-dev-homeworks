@@ -124,17 +124,24 @@ Execution Time: 0.045 ms
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1).
 ```bash
-docker exec postgres_db_1 pg_dump -U postgres -h localhost -p 5432 -F p -f backup.sql test_db
+docker exec 85532b1b0ae3 pg_dump -U test-admin-user -d test_db -Fc -f /var/lib/postgresql/backups/backup_file.dump
 docker cp postgres_db_1:/var/lib/postgresql/backups/backup.sql ./postgres_backups/backup.sql
 ```
 Остановите контейнер с PostgreSQL, но не удаляйте volumes.
-
+```
+docker stop postgres_db_1
+```
 Поднимите новый пустой контейнер с PostgreSQL.
-
+```
+docker run --name postges_db_2 -e POSTGRES_PASSWORD=123 -v /root/postgres/postgres_backups/:/var/lib/postgresql/backups -d postgres:12
+```
 Восстановите БД test_db в новом контейнере.
+```
+docker exec postges_db_2 psql -U postgres -c "CREATE DATABASE test_db;"
+docker exec postges_db_2 pg_restore -U postgres -d test_db /var/lib/postgresql/backups/backup_file.dump
+```
 
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
-
 ---
 
 ### Как cдавать задание
